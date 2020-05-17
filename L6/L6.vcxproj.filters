@@ -39,6 +39,9 @@
     <ClCompile Include="Repo_file.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Watch_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Repository.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Repo_file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Watch_file.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

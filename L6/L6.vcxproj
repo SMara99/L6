@@ -146,6 +146,7 @@
     <ClCompile Include="Repo_file.cpp" />
     <ClCompile Include="Repo_Watch.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Watch_file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ausnahmen.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Repository.h" />
     <ClInclude Include="Repo_file.h" />
     <ClInclude Include="Repo_Watch.h" />
+    <ClInclude Include="Watch_file.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
