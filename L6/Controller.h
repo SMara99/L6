@@ -15,7 +15,7 @@ public:
 	//Controller fur Admin
 
 	//anzeigen der Liste
-	void liste_ansehen();
+	void liste_ansehen(Repository Liste);
 
 	//Controller fur Client
 
@@ -24,7 +24,7 @@ public:
 	//Nach dem Entfernen der Film wird die Bewertung durchgelaufen
 	void anzahl_likes();
 	//ansehen der ganzen Liste
-	void watchliste_ansehen();
+	void watchliste_ansehen(Repo_Watch watchlist);
 
 	Controller();
 	~Controller();

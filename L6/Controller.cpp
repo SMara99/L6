@@ -3,13 +3,16 @@
 Controller::Controller() {};
 Controller::~Controller() {};
 
-void Controller::liste_ansehen() {
-	Repository Liste;
+void Controller::liste_ansehen(Repository Liste) {
 
 	vector<Film> list = Liste.get_liste();
 
 	for (int i = 0; i < list.size(); i++) {
-		show(list[i]);
+		cout << "\n" << list[i].get_titel() << " " << 
+			list[i].get_genre() << " " << 
+			list[i].get_jahr() << " " << 
+			list[i].get_likes() << "\n" << 
+			list[i].get_trailer() << "\n";
 	}
 }
 
@@ -35,14 +38,16 @@ void Controller::anzahl_likes() {
 
 }
 
-void Controller::watchliste_ansehen() {
+void Controller::watchliste_ansehen(Repo_Watch watchlist) {
 
-	Repo_Watch Watchlist;
-
-	vector<Film> list = Watchlist.get_liste();
+	vector<Film> list = watchlist.get_liste();
 
 	for (int i = 0; i < list.size(); i++) {
-		show(list[i]);
+		cout << "\n" << list[i].get_titel() << " " <<
+			list[i].get_genre() << " " <<
+			list[i].get_jahr() << " " <<
+			list[i].get_likes() << "\n" <<
+			list[i].get_trailer() << "\n";
 	}
 
 }

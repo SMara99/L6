@@ -17,10 +17,10 @@ void Repo_Watch::add(Film film) {
 	if (index < 0) Watchlist.push_back(film);
 }
 
-void Repo_Watch::remove(Film film) {
+void Repo_Watch::remove(string film) {
 	int index = -1;
 	for (int i = 0; i < Watchlist.size(); i++) {
-		if (film.get_titel() == Watchlist[i].get_titel())
+		if (film == Watchlist[i].get_titel())
 			index = i;
 	}
 	if (index > -1) Watchlist.erase(Watchlist.begin() + index);

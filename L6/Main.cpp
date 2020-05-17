@@ -1,6 +1,7 @@
 #include "Menu.h"
 
 int main() {
+
 	int x;
 	cout << "Bine ati venit! \n Introduceti: \n1 -> Admin \n2 -> Client\n"; cin >> x;
 
