@@ -10,10 +10,6 @@ class Repo_file
 {
 private:
 	fstream Repository;
-	struct film_line {
-		string film;
-		int line;
-	};
 
 public:
 	Repo_file();
