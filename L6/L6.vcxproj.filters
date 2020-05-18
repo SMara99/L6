@@ -36,6 +36,12 @@
     <ClCompile Include="Repository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QuitMenuItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quitException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Film.h">
@@ -54,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Repository.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitMenuItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="quitException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

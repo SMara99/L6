@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "QuitMenuItem.h"
 
 void Controller::CreateMenu() {
 	//Menu Admin:
@@ -7,7 +8,7 @@ void Controller::CreateMenu() {
 	this->menu.add("Remove Film", [this]() {this->remove_film_liste(); });
 	this->menu.add("Update Film", [this]() {this->update(); });
 
-	//this->menu.add(QuitMenuItem[10]);
+	this->menu.add(QuitMenuItem(4));
 
 }
 void Controller::add_film_liste() {
@@ -49,11 +50,9 @@ void Controller::Run() {
 			menuItem.execute();
 		}
 	}
-	/*
 	catch (quitException qex) {
 		//quits program
 	}
-	*/
 	catch (exception ex) {
 		cout << "Exception occured: " << ex.what() << endl;
 	}

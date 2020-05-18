@@ -15,6 +15,8 @@ Menu& Menu::add(string Text, function<void()> action) {
 	return this->add(MenuItem(this->menuItems.size() + 1, Text, action));
 }
 
+MenuItem notFoundMenuItem(-1, "Not found", []() { cout << "\nMenu item not found.\n"; });
+
 MenuItem& Menu::find_item(int option) {
 	for (auto i = 0; i < this->menuItems.size(); i++) {
 		if (this->menuItems[i].get_option() == option) {
@@ -24,4 +26,3 @@ MenuItem& Menu::find_item(int option) {
 	return notFoundMenuItem;
 }
 
-MenuItem notFoundMenuItem(-1, "Not found", []() { cout << "\nMenu item not found.\n"; });

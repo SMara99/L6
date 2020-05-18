@@ -143,6 +143,8 @@
     <ClCompile Include="Film.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuItem.cpp" />
+    <ClCompile Include="quitException.cpp" />
+    <ClCompile Include="QuitMenuItem.cpp" />
     <ClCompile Include="Repository.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -152,6 +154,8 @@
     <ClInclude Include="Film.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuItem.h" />
+    <ClInclude Include="quitException.h" />
+    <ClInclude Include="QuitMenuItem.h" />
     <ClInclude Include="Repository.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
