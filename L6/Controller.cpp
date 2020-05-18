@@ -7,7 +7,6 @@ void Controller::CreateMenu() {
 	this->menu.add("Add Film", [this]() {this->add_film_liste(); });
 	this->menu.add("Remove Film", [this]() {this->remove_film_liste(); });
 	this->menu.add("Update Film", [this]() {this->update(); });
-
 	this->menu.add(QuitMenuItem(4));
 
 }
