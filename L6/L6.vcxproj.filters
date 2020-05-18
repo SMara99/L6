@@ -15,13 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Repository.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Film.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Repo_Watch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ausnahmen.cpp">
@@ -36,21 +30,15 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Repo_file.cpp">
+    <ClCompile Include="MenuItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Watch_file.cpp">
+    <ClCompile Include="Repository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Repository.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Film.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Repo_Watch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ausnahmen.h">
@@ -62,10 +50,10 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Repo_file.h">
+    <ClInclude Include="MenuItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Watch_file.h">
+    <ClInclude Include="Repository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

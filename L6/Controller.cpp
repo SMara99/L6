@@ -1,53 +1,60 @@
 #include "Controller.h"
 
-Controller::Controller() {};
-Controller::~Controller() {};
+void Controller::CreateMenu() {
+	//Menu Admin:
 
-void Controller::liste_ansehen(Repository Liste) {
+	this->menu.add("Add Film", [this]() {this->add_film_liste(); });
+	this->menu.add("Remove Film", [this]() {this->remove_film_liste(); });
+	this->menu.add("Update Film", [this]() {this->update(); });
 
-	vector<Film> list = Liste.get_liste();
+	//this->menu.add(QuitMenuItem[10]);
 
-	for (int i = 0; i < list.size(); i++) {
-		cout << "\n" << list[i].get_titel() << " " << 
-			list[i].get_genre() << " " << 
-			list[i].get_jahr() << " " << 
-			list[i].get_likes() << "\n" << 
-			list[i].get_trailer() << "\n";
+}
+void Controller::add_film_liste() {
+	cout << "Adaugati informatii -> Titel Genre Jahr Likes Trailer";
+	string titel, genre, trailer; int jahr, likes;
+	cin >> titel >> genre >> jahr >> likes >> trailer;
+	Film x(titel, genre, jahr, likes, trailer);
+	repo.add_liste(x);
+};
+
+void Controller::remove_film_liste() {
+	cout << "Introduceti titlu: ";
+	string titel;
+	cin >> titel;
+	repo.remove_liste(titel);
+};
+
+void Controller::update() {
+	cout << "Care? ";
+	string old_titel;
+	cin >> old_titel;
+	cout << "Informatii noi: Titel Genre Jahr Likes Trailer";
+	string new_titel, genre, trailer; int likes, jahr;
+	cin >> new_titel >> genre >> jahr >> likes >> trailer;
+	Film x(new_titel, genre, jahr, likes, trailer);
+	repo.update(old_titel, x);
+}
+
+void Controller::Run() {
+	this->CreateMenu();
+
+	try {
+		while (true) {
+			this->menu.show();
+			int option;
+			cin >> option;
+
+			auto menuItem = this->menu.find_item(option);
+			menuItem.execute();
+		}
 	}
-}
-
-void Controller::show(Film film) {
-	cout << "\n" << film.get_titel() << " ";
-	cout << film.get_genre() << " ";
-	cout << film.get_jahr() << " ";
-	cout << film.get_likes() << " ";
-
-	//transform string Trailer in LPCWSTR pt a deschide in browser
-	string beta = film.get_trailer();
-	wstring t(beta.begin(), beta.end());
-	LPCWSTR trailer = t.c_str();
-	//la fel si pt "open"
-	string alpha = "open";
-	wstring alph(alpha.begin(), alpha.end());
-	LPCWSTR status = alph.c_str();
-	//rulare in browser;
-	ShellExecute(NULL, status, trailer, NULL, NULL, SW_SHOWNORMAL);
-}
-
-void Controller::anzahl_likes() {
-
-}
-
-void Controller::watchliste_ansehen(Repo_Watch watchlist) {
-
-	vector<Film> list = watchlist.get_liste();
-
-	for (int i = 0; i < list.size(); i++) {
-		cout << "\n" << list[i].get_titel() << " " <<
-			list[i].get_genre() << " " <<
-			list[i].get_jahr() << " " <<
-			list[i].get_likes() << "\n" <<
-			list[i].get_trailer() << "\n";
+	/*
+	catch (quitException qex) {
+		//quits program
 	}
-
+	*/
+	catch (exception ex) {
+		cout << "Exception occured: " << ex.what() << endl;
+	}
 }

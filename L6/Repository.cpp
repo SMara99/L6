@@ -1,36 +1,62 @@
 #include "Repository.h"
 
-Repository::Repository() {};
-Repository::~Repository() {};
+void Repository::add_liste(Film film) {
 
-vector<Film> Repository::get_liste() {
-	return Liste;
-}
+	bool gef = true;
+	
+	film_file.open("Liste.txt");
 
-void Repository::add(Film film) {
-	int index = -1;
-	for (int i = 0; i < Liste.size(); i++) {
-		if (film.get_titel() == Liste[i].get_titel())
-			index = i;
+	string line;
+	while (getline(film_file, line)) {
+		string titel = line.substr(0, line.find_first_of(" "));
+		if (titel == film.get_titel()) gef = false;
 	}
-	if (index < 0) Liste.push_back(film);
-}
 
-void Repository::remove(string titel) {
-	int index = -1;
-	for (int i = 0; i < Liste.size(); i++) {
-		if (titel == Liste[i].get_titel())
-			index = i;
-	}
-	if (index > -1) Liste.erase(Liste.begin() + index);
-}
+	if (gef) film_file << "\n%s %s %d %d \n%s" << 
+		film.get_titel() << film.get_genre() << film.get_jahr() << film.get_likes() << film.get_trailer();
 
-void Repository::update(string name, Film film) {
-	int index = -1;
-	for (int i = 0; i < Liste.size(); i++) {
-		if (name == Liste[i].get_titel()) {
-			index = i;
-		}
+	film_file.close();
+};
+
+void Repository::remove_liste(string film) {
+	fstream temp;
+	temp.open("temp.txt");
+
+	film_file.open("Liste.txt");
+	string line1, line2;
+	while (getline(film_file, line1) && getline(film_file, line2)) {
+		string titel = line1.substr(0, line1.find_first_of(" "));
+		if (titel == film);
+		else temp << "\n" << line1 << "\n" << line2;
 	}
-	if (index > -1) Liste[index] = film;
-}
+	film_file.close();
+
+	temp.close();
+
+	remove("Liste.txt");
+
+	rename("temp.txt" , "Liste.txt");
+
+};
+
+void Repository::update(string titel, Film film) {
+	fstream temp;
+	temp.open("temp.txt");
+
+	film_file.open("Liste.txt");
+	string line1, line2;
+	while (getline(film_file, line1) && getline(film_file, line2)) {
+		string name = line1.substr(0, line1.find_first_of(" "));
+		if (name == titel) temp << "\n%s %s %d %d \n%s" <<
+			film.get_titel() << film.get_genre() << film.get_jahr() << film.get_likes() << film.get_trailer();
+		else temp << "\n" << line1 << "\n" << line2;
+	}
+	film_file.close();
+
+	temp.close();
+
+	remove("Liste.txt");
+	rename("temp.txt", "Liste.txt");
+
+	
+};

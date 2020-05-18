@@ -1,22 +1,21 @@
 #pragma once
 #include "Film.h"
-#include<vector>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
 
 class Repository
 {
-	friend class Controller;
 private:
-	vector<Film> Liste;
+	fstream film_file;
 
 public:
-	Repository();
-	~Repository();
 
-	vector<Film> get_liste();
-
-	void add(Film film);
-	void remove(string titel);
-	void update(string name, Film film);
+	void add_liste(Film film);
+	void remove_liste(string titel);
+	void update(string titel, Film film);
 
 };
 
