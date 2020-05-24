@@ -56,9 +56,7 @@ void Repository::update(string titel, Film film) {
 	temp.close();
 
 	remove("Liste.txt");
-	rename("temp.txt", "Liste.txt");
-
-	
+	rename("temp.txt", "Liste.txt");	
 }
 
 void Repository::rate_movie(string title, string rating, Film film)

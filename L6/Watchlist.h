@@ -9,6 +9,7 @@ class Watchlist
 {
 protected:
 	vector<Film> watchlist;
+	Film lastremoved;
 	fstream film_file;
 
 public:
@@ -19,10 +20,17 @@ public:
 	void remove_from_vector(string title);
 	//updates a film from the vector - if the values remain as the default ones, then no changes will occur
 	void update_in_vector(string title, string new_title = "", string new_genre = "", int new_year = NULL, int new_likes = NULL, string new_trailer = "");
+
+	//updates the watchlist file
+	void update_watchlist_file();
+
 	//creates a new file which will contain all the movies within a genre - the method will allow the client to then add the movie to their watchlist
 	void filter_by_genre(string genre);
 	//creates a vector that reads the "Genre.txt" folder's lines as film objects
-	void genre_to_vector();
+	vector<Film> genre_to_vector();
+
+	//returns the last film that was rmoved (used by the rating function)
+	Film get_lastremoved();
 };
 
 class Watchlist_CSV : public Watchlist
@@ -32,7 +40,6 @@ private:
 public:
 	//writes the contents of the watchlist vector in a csv format
 	void write_to_csv();
-	void open_csv();
 };
 
 class Wachlist_HTML : public Watchlist
@@ -41,5 +48,4 @@ private:
 	fstream html_file;
 public:
 	void write_to_html();
-	void open_html();
 };

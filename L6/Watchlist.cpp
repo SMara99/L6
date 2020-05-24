@@ -17,12 +17,16 @@ void Watchlist::remove_from_vector(string title)
 	for (unsigned int it = 0; it < watchlist.size(); it++)
 	{
 		if (watchlist[it].get_titel() == title)
-			watchlist.erase(watchlist.begin()+it);
+		{
+			lastremoved = watchlist[it];
+			watchlist.erase(watchlist.begin() + it);
+		}
 	}
 }
 
 void Watchlist::update_in_vector(string title, string new_title, string new_genre, int new_year, int new_likes, string new_trailer)
 {
+	//if any of the default values remain unchanged then the corresponding field remains unchanged
 	for (unsigned int it = 0; it < watchlist.size(); it++)
 	{
 		if (watchlist[it].get_titel() == title)
@@ -44,6 +48,15 @@ void Watchlist::update_in_vector(string title, string new_title, string new_genr
 
 		}
 	}
+}
+
+void Watchlist::update_watchlist_file()
+{
+	fstream watchlist_file;
+	watchlist_file.open("Watchlist.txt");
+	for (int i = 0; i < watchlist.size(); i++)
+		watchlist_file << watchlist[i].get_titel() << " " << watchlist[i].get_genre() << " " << watchlist[i].get_jahr() << " " << watchlist[i].get_likes() << " " << watchlist[i].get_trailer() << endl;
+	watchlist_file.close();
 }
 
 void Watchlist::filter_by_genre(string genre)
@@ -87,7 +100,7 @@ void Watchlist::filter_by_genre(string genre)
 	aux.close();
 }
 
-void Watchlist::genre_to_vector()
+vector<Film> Watchlist::genre_to_vector()
 {
 	ifstream in;
 	in.open("Genre.txt");
@@ -108,6 +121,13 @@ void Watchlist::genre_to_vector()
 		aux.set_trailer(trailer);
 		genre_vector.push_back(aux);
 	}
+
+	return genre_vector;
+}
+
+Film Watchlist::get_lastremoved()
+{
+	return lastremoved;
 }
 
 void Watchlist_CSV::write_to_csv()
@@ -121,6 +141,7 @@ void Watchlist_CSV::write_to_csv()
 
 	csv_file.close();
 }
+
 
 void Wachlist_HTML::write_to_html()
 {
