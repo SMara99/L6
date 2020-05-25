@@ -43,6 +43,7 @@ public:
 
 	void play_trailer(string trailer);
 
-	void Run();
+	void Run_Admin();
+	void Run_Client();
 };
 

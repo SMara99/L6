@@ -20,6 +20,8 @@ void Controller::CreateMenuAdmin() {
 
 void Controller::CreateMenuClient()
 {
+	//Menu Client:
+
 	this->menu.add("View films by genre", [this]() {this->filter_by_genre(); });
 	this->menu.add("Remove film from watchlist", [this]() {this->remove_from_watchlist(); });
 	this->menu.add("Update watchlist", [this]() {this->update_watchlist(); });
@@ -157,7 +159,7 @@ void Controller::play_trailer(string trailer)
 	ShellExecute(NULL, status, aux, NULL, NULL, SW_SHOWNORMAL);
 }
 
-void Controller::Run() {
+void Controller::Run_Admin() {
 	this->CreateMenuAdmin();
 
 	try {
@@ -178,3 +180,23 @@ void Controller::Run() {
 	}
 }
 
+void Controller::Run_Client() {
+	this->CreateMenuClient();
+
+	try {
+		while (true) {
+			this->menu.show();
+			int option;
+			cin >> option;
+
+			auto menuItem = this->menu.find_item(option);
+			menuItem.execute();
+		}
+	}
+	catch (quitException qex) {
+		//iesire din program
+	}
+	catch (exception ex) {
+		cout << "Exception occured: " << ex.what() << endl;
+	}
+}
