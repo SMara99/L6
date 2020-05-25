@@ -31,8 +31,8 @@ public:
 	void add_film_liste();
 	void remove_film_liste();
 	void update();
-	//void ratefilm();
 
+	//void ratefilm();
 	//void add_to_watchlist();
 	void remove_from_watchlist();
 	void update_watchlist();
