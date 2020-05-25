@@ -10,5 +10,5 @@ void MenuItem::show() const {
 }
 
 void MenuItem::execute() {
-	this->action;
+	this->action();
 }
